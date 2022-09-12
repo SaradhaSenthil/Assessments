@@ -60,7 +60,7 @@ public class SalesForce_Assessment4 {
         driver.findElement(By.xpath("(//span[text()='Save'])[2]")).click();
         
         String nameSal = driver.findElement(By.xpath("//span[text()='Mrs. Saradha SS']")).getText();
-         Assert.assertEquals(nameSal, "Mrs. Saradha Senthilkumar");
+         Assert.assertEquals(nameSal, "Mrs. Saradha SS");
          System.out.println(nameSal);
         
         driver.close();
