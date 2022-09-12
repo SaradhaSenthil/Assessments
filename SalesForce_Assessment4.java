@@ -45,7 +45,7 @@ public class SalesForce_Assessment4 {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
         //Click New in individuals page
         driver.findElement(By.xpath("//div[@title='New']")).click();
-        driver.findElement(By.xpath("//input[contains(@class,'lastName compoundBLRadius')]")).sendKeys("Senthilkumar");
+        driver.findElement(By.xpath("//input[contains(@class,'lastName compoundBLRadius')]")).sendKeys("SS");
         driver.findElement(By.xpath("(//span[text()='Save'])[2]")).click();
         
         String surName = driver.findElement(By.xpath("//span[@class='uiOutputText']")).getText();
@@ -59,7 +59,7 @@ public class SalesForce_Assessment4 {
         driver.findElement(By.xpath("//input[contains(@class,'firstName compoundBorderBottom')]")).sendKeys("Saradha");
         driver.findElement(By.xpath("(//span[text()='Save'])[2]")).click();
         
-        String nameSal = driver.findElement(By.xpath("//span[text()='Mrs. Saradha Senthilkumar']")).getText();
+        String nameSal = driver.findElement(By.xpath("//span[text()='Mrs. Saradha SS']")).getText();
          Assert.assertEquals(nameSal, "Mrs. Saradha Senthilkumar");
          System.out.println(nameSal);
         
