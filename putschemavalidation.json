@@ -14,13 +14,13 @@
         "resolved_by": "",
         "sys_updated_by": "admin",
         "opened_by": {
-            "link": "https://dev116902.service-now.com/api/now/table/sys_user/6816f79cc0a8016401c5a33be04be441",
+            "link": "https://dev110022.service-now.com/api/now/table/sys_user/6816f79cc0a8016401c5a33be04be441",
             "value": "6816f79cc0a8016401c5a33be04be441"
         },
         "user_input": "",
         "sys_created_on": "2022-10-31 11:04:17",
         "sys_domain": {
-            "link": "https://dev116902.service-now.com/api/now/table/sys_user_group/global",
+            "link": "https://dev110022.service-now.com/api/now/table/sys_user_group/global",
             "value": "global"
         },
         "state": "1",
