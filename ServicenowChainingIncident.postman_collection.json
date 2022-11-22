@@ -1,0 +1,292 @@
+{
+	"info": {
+		"_postman_id": "c473f8b5-2004-4393-bb18-e42e6b3bbb55",
+		"name": "ServicenowChainingIncident",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create Incident",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// extract the response \r",
+							"var resp=pm.response.json();\r",
+							"//console.log(resp);\r",
+							"// Extract sysid from the response\r",
+							"console.log(resp.result.sys_id);\r",
+							"var resp_SysID=resp.result.sys_id;\r",
+							"\r",
+							"//pm.globals.set(\"sysid\",resp.result.sys_id);\r",
+							"pm.globals.set(\"sysid\",resp_SysID);\r",
+							"\r",
+							"var extractedGlobalvar=pm.globals.get(\"sysid\");\r",
+							"console.log(extractedGlobalvar)\r",
+							"\r",
+							"\r",
+							"pm.test(\"Status code is 201 for create Incident\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"short_description\": \"created via Postman\",\r\n    \"description\": \"Description added via Postman\"\r\n}"
+				},
+				"url": {
+					"raw": "{{BaseUri}}/api/now/table/incident",
+					"host": [
+						"{{BaseUri}}"
+					],
+					"path": [
+						"api",
+						"now",
+						"table",
+						"incident"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Incident  with file",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// extract the response \r",
+							"var resp=pm.response.json();\r",
+							"//console.log(resp);\r",
+							"// Extract sysid from the response\r",
+							"console.log(resp.result.sys_id);\r",
+							"var resp_SysID=resp.result.sys_id;\r",
+							"\r",
+							"//pm.globals.set(\"sysid\",resp.result.sys_id);\r",
+							"pm.globals.set(\"sysid\",resp_SysID);\r",
+							"\r",
+							"var extractedGlobalvar=pm.globals.get(\"sysid\");\r",
+							"console.log(extractedGlobalvar)\r",
+							"\r",
+							"\r",
+							"pm.test(\"Status code is 201 for create Incident\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"short_description\": \"{{Short_Desc}}\",\r\n    \"description\": \"{{Desc}}\"\r\n}"
+				},
+				"url": {
+					"raw": "{{BaseUri}}/api/now/table/incident",
+					"host": [
+						"{{BaseUri}}"
+					],
+					"path": [
+						"api",
+						"now",
+						"table",
+						"incident"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Particular Incident",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/xml",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{BaseUri}}/api/now/table/incident/{{sysid}}?sysparm_fields=state,priority,description,sys_id",
+					"host": [
+						"{{BaseUri}}"
+					],
+					"path": [
+						"api",
+						"now",
+						"table",
+						"incident",
+						"{{sysid}}"
+					],
+					"query": [
+						{
+							"key": "sysparm_fields",
+							"value": "state,priority,description,sys_id"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Incident with Put",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"short_description\": \"{{Short_Desc}}\",\r\n    \"description\": \"{{Desc}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BaseUri}}/api/now/table/incident/{{sysid}}",
+					"host": [
+						"{{BaseUri}}"
+					],
+					"path": [
+						"api",
+						"now",
+						"table",
+						"incident",
+						"{{sysid}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Incident with Patch",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"short_description\": \"updated  via Postman\",\r\n    \"description\": \"Description updated using patch via Postman\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BaseUri}}/api/now/table/incident/{{sysid}}",
+					"host": [
+						"{{BaseUri}}"
+					],
+					"path": [
+						"api",
+						"now",
+						"table",
+						"incident",
+						"{{sysid}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Incident",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 204 for delete\", function () {\r",
+							"    pm.response.to.have.status(204);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{BaseUri}}/api/now/table/incident/{{sysid}}",
+					"host": [
+						"{{BaseUri}}"
+					],
+					"path": [
+						"api",
+						"now",
+						"table",
+						"incident",
+						"{{sysid}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "basic",
+		"basic": [
+			{
+				"key": "password",
+				"value": "Leaf@1234",
+				"type": "string"
+			},
+			{
+				"key": "username",
+				"value": "admin",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"pm.test(\"Response time is less than 200ms\", function () {",
+					"    pm.expect(pm.response.responseTime).to.be.below(2000);",
+					"});"
+				]
+			}
+		}
+	]
+}
